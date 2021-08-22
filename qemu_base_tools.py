@@ -1,5 +1,6 @@
 import os
 import subprocess
+import shutil
 
 
 def launch(cmd):
@@ -52,3 +53,31 @@ def get_host_type():
     output = subprocess.run(cmd, stdout=subprocess.PIPE)
     all_cmd = str(output.stdout.decode("utf-8"))
     return all_cmd
+
+
+def get_nproc():
+    cmd = ["nproc"]
+    output = subprocess.run(cmd, stdout=subprocess.PIPE)
+    all_cmd = str(output.stdout.decode("utf-8"))
+    return int(all_cmd)
+
+
+def get_total_host_mem():
+    cmd = ["grep", "MemTotal", "/proc/meminfo"]
+    output = subprocess.run(cmd, stdout=subprocess.PIPE)
+    all_cmd = str(output.stdout.decode("utf-8"))
+    mem_kB = int(all_cmd.split(" ")[7])
+    mem_MB = int(mem_kB / 1024)
+    return mem_MB
+
+
+def get_free_disk_space_GB(path):
+    total, used, free = shutil.disk_usage(path)
+    space_o = int(free)
+    space_ko = int(space_o / 1024)
+    space_Mo = int(space_ko / 1024)
+    space_Go = space_Mo / 1024
+    return space_Go
+
+
+get_free_disk_space_GB("/home/guillaume")

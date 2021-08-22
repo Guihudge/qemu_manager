@@ -2,6 +2,7 @@ import qemu_base_tools
 import qemu_arm_tools
 import qemu_x86_tools
 import qemu_disk_tools
+import json_load
 
 import tools_kit
 
@@ -109,16 +110,25 @@ def disk_util():  # TODO: rewirte this function (disk_util)
             quit = not quit
 
 
+def boot_from_json():
+    file = tools_kit.choose_list(qemu_disk_tools.list_file(
+        constant.default_vm_path), "Choose VM save: ")
+    cmd = json_load.gen_cmd_from_save(file)
+    boot_vm(cmd)
+
+
 def main_loop():  # TODO: rewirte this function (main_loop)
     run = True
     while run:
-        print("choose action:\n1: boot vm manualy\n2: disk util\n3: Quit")
+        print("choose action:\n1: boot vm manualy\n2: disk util\n3: Load VM from file\n4: Quit")
         rep = int(input("choose action: "))
         if rep == 1:
             boot_vm_manualy()
         if rep == 2:
             disk_util()
         if rep == 3:
+            boot_from_json()
+        if rep == 4:
             run = not run
 
 

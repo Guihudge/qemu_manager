@@ -12,4 +12,5 @@ default_machine_id_arm = 81
 default_arch_id = 4
 default_iso_path = "./iso/*.iso"
 default_disk_path = "./disk/"
+default_vm_path = "./vm/*.json"
 default_disk_format = 1
