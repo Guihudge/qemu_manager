@@ -1,2 +1,11 @@
 *.pyc
-__pycache__
+__pycache__/*
+__pycache__/constant.cpython-39.pyc
+__pycache__/*.pyc
+__pycache__/constant.cpython-39.pyc
+__pycache__/json_load.cpython-39.pyc
+__pycache__/qemu_arm_tools.cpython-39.pyc
+__pycache__/qemu_base_tools.cpython-39.pyc
+__pycache__/qemu_disk_tools.cpython-39.pyc
+__pycache__/qemu_x86_tools.cpython-39.pyc
+__pycache__/tools_kit.cpython-39.pyc
