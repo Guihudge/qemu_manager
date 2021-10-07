@@ -116,11 +116,20 @@ def boot_from_json():
     cmd = json_load.gen_cmd_from_save(file)
     boot_vm(cmd)
 
+def print_host_info():
+    print("Host information: ")
+    print("\tArch:", qemu_base_tools.get_host_type())
+    print("\tnb cpu theard:", qemu_base_tools.get_nproc())
+    print("\tMemory:", qemu_base_tools.get_total_host_mem(), "MB")
+    print("\tfree disk space:", round(qemu_base_tools.get_free_disk_space_GB("./")),"GB")
+
+    pass
+
 
 def main_loop():  # TODO: rewirte this function (main_loop)
     run = True
     while run:
-        print("choose action:\n1: boot vm manualy\n2: disk util\n3: Load VM from file\n4: Quit")
+        print("choose action:\n1: boot vm manualy\n2: disk util\n3: Load VM from file\n4: Get host info\n5: Quit")
         rep = int(input("choose action: "))
         if rep == 1:
             boot_vm_manualy()
@@ -129,7 +138,9 @@ def main_loop():  # TODO: rewirte this function (main_loop)
         if rep == 3:
             boot_from_json()
         if rep == 4:
-            run = not run
+            print_host_info()
+        if rep == 5:
+            run  = not run
 
 
 main_loop()

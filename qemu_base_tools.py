@@ -39,7 +39,7 @@ def kvm_enable(cmd, host_arch, dest_arch):
             cmd = cmd + " -enable-kvm"
             return cmd
     else:
-        print("kvm not available for the choosen arch. sorry ;(")
+        print("kvm not available for the choosen arch. sorry :(")
     return cmd
 
 
