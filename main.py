@@ -119,6 +119,17 @@ def boot_from_json():
     boot_vm(cmd)
 
 
+def print_host_info():
+    print("Host information: ")
+    print("\tArch:", qemu_base_tools.get_host_type())
+    print("\tnb cpu theard:", qemu_base_tools.get_nproc())
+    print("\tMemory:", qemu_base_tools.get_total_host_mem(), "MB")
+    print("\tfree disk space:", round(
+        qemu_base_tools.get_free_disk_space_GB("./")), "GB")
+
+    pass
+
+
 def main_loop():  # TODO: rewirte this function (main_loop)
     run = True
     while run:
@@ -131,6 +142,8 @@ def main_loop():  # TODO: rewirte this function (main_loop)
         if rep == 3:
             boot_from_json()
         if rep == 4:
+            print_host_info()
+        if rep == 5:
             run = not run
 
 
