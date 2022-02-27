@@ -1,1 +1,1 @@
-{"arch": "x86_64","core":2, "cpu": "host", "ram": "2G", "kvm": true, "iso": [], "disk": [{"file": "./disk/os1.qcow2", "interface": "virtio", "type": "disk", "format": "qcow2"}]}
+{"arch": "x86_64","core":2, "cpu": "host", "ram": "2G", "kvm": true, "vnc":2,"iso": [], "disk": [{"file": "./disk/os1.qcow2", "interface": "virtio", "type": "disk", "format": "qcow2"}]}

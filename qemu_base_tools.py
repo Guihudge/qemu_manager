@@ -2,6 +2,8 @@ import os
 import subprocess
 import shutil
 
+import tools_kit
+
 
 def launch(cmd):
     os.system(cmd)
@@ -80,4 +82,9 @@ def get_free_disk_space_GB(path):
     return space_Go
 
 
-get_free_disk_space_GB("/home/guillaume")
+def enable_vnc(cmd):
+    if(tools_kit.check_yn("Enable vnc(y/n)? ")):
+        screen = tools_kit.choose_number(
+            "Enter screen numbre (not equal to 0)")
+        cmd += " -vnc :"+str(screen)
+    return cmd

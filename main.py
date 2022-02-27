@@ -78,6 +78,8 @@ def boot_vm_manualy():
 
     cmd = qemu_disk_tools.disk_setup(cmd)
 
+    cmd = qemu_base_tools.enable_vnc(cmd)
+
     boot_vm(cmd)
 
 
@@ -121,7 +123,7 @@ def main_loop():  # TODO: rewirte this function (main_loop)
     run = True
     while run:
         print("choose action:\n1: boot vm manualy\n2: disk util\n3: Load VM from file\n4: Quit")
-        rep = int(input("choose action: "))
+        rep = tools_kit.choose_number("choose action: ")
         if rep == 1:
             boot_vm_manualy()
         if rep == 2:

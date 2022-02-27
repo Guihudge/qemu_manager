@@ -10,7 +10,14 @@ def choose_list(list, string, default=1):
 
 
 def choose_number(string):
-    return input(string)
+    while True:
+        rep = input(string)
+        try:
+            rep = int(rep)
+            break
+        except:
+            print("Please enter a number")
+    return rep
 
 
 def check_yn(awnser, info=None):

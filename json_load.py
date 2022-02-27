@@ -12,6 +12,7 @@ arch : str
 cpu : int
 ram : str
 kvm : bool
+vnc : int
 cpu/machine : str
 iso : list
 disk: list(dict[disk_format}])
@@ -42,6 +43,9 @@ def base_cmd(dico):
 
     if dico["kvm"]:
         cmd = cmd + " -enable-kvm"
+
+    if "vnc" in dico:
+        cmd = cmd + " -vnc :"+str(dico["vnc"])
 
     return cmd
 
